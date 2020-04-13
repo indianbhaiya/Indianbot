@@ -16,9 +16,8 @@ async def _(event):
         quote = reply
     else:
     	await event.edit("```Plz Reply to a TEXT message or Input TEXT.```")
-    return
     bot = "@QuotLyBot"
-    await event.edit(f"```Making a Quote...```")
+    await event.edit("```Making a Quote...```")
 
     async with borg.conversation(bot) as bot_conv:
         if True:
