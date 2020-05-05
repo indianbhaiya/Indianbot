@@ -1,4 +1,4 @@
-"""Emoji
+
 Available Commands:
 .spower
 Credits to @pureindialover
