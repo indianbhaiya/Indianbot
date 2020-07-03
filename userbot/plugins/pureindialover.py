@@ -17,8 +17,8 @@ async def _(event):
         return
     animation_interval = 1.5
     animation_ttl = range(0, 36)
-    #input_str = event.pattern_match.group(1)
-   # if input_str == "pureindialover":
+    # input_str = event.pattern_match.group(1)
+    # if input_str == "pureindialover":
     await event.edit("@pureindialover")
     animation_chars = [
         "@pureindialover mera Loda",
@@ -27,7 +27,7 @@ async def _(event):
         "@pureindialover owner of @Randi_hu_mai Army ",
         "Loda Aur Lund Nahi Hai mere Pas",
         "Mere Baap Ka loda chahiye mujhko",
-        "@pureindialover"
+        "@pureindialover",
     ]
 
     for i in animation_ttl:
