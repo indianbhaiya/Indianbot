@@ -21,12 +21,12 @@ async def _(event):
    # if input_str == "pureindialover":
     await event.edit("@pureindialover")
     animation_chars = [
-            "@pureindialover tera baap",
-            "@pureindialover is bot ka creator",
-            "@pureindialover bot ko jaan dene wala",
-            "@pureindialover owner of @IndianArMyGiveaway ",
-            "tujhe aur kya chaiye vo hai mere sath",
-            "tera baap",
+            "@pureindialover mera Loda",
+            "@pureindialover Randi ka baccha",
+            "@pureindialover Apni Ma chod ke apne bhai ko jan dene wala",
+            "@pureindialover owner of @Randi_hu_mai Army ",
+            "Loda Aur Lund Nahi Hai mere Pas",
+            "Mere Baap Ka loda chahiye mujhko",
             "@pureindialover"
          ]
             
