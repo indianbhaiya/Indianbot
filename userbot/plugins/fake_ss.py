@@ -23,7 +23,5 @@ async def _(event):
     for I in range(NO_OF_SCSS):
         await event.client(
             functions.messages.SendScreenshotNotificationRequest(
-                peer=event.chat_id, reply_to_msg_id=42
-            )
-        )
+                peer=event.chat_id, reply_to_msg_id=42))
     await event.delete()

@@ -52,7 +52,6 @@ LANG = "en"
 async def carbon_api(e):
 
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-
         """ A Wrapper for carbon.now.sh """
 
         await e.edit("`Processing..`")
@@ -97,7 +96,8 @@ async def carbon_api(e):
 
         chrome_options.add_experimental_option("prefs", prefs)
 
-        driver = webdriver.Chrome(executable_path=CHROME_DRIVER, options=chrome_options)
+        driver = webdriver.Chrome(executable_path=CHROME_DRIVER,
+                                  options=chrome_options)
 
         driver.get(url)
 
@@ -112,12 +112,16 @@ async def carbon_api(e):
 
         params = {
             "cmd": "Page.setDownloadBehavior",
-            "params": {"behavior": "allow", "downloadPath": download_path},
+            "params": {
+                "behavior": "allow",
+                "downloadPath": download_path
+            },
         }
 
         command_result = driver.execute("send_command", params)
 
-        driver.find_element_by_xpath("//button[contains(text(),'Export')]").click()
+        driver.find_element_by_xpath(
+            "//button[contains(text(),'Export')]").click()
 
         # driver.find_element_by_xpath("//button[contains(text(),'4x')]").click()
 
@@ -138,7 +142,8 @@ async def carbon_api(e):
         await e.client.send_file(
             e.chat_id,
             file,
-            caption="<< Here's your carbon, \n Carbonised by [IndianBot](https://www.github.com/indianbhaiya/IndianBot)>> ",
+            caption=
+            "<< Here's your carbon, \n Carbonised by [IndianBot](https://www.github.com/indianbhaiya/IndianBot)>> ",
             force_document=True,
             reply_to=e.message.reply_to_msg_id,
         )
@@ -156,6 +161,7 @@ async def carbon_api(e):
 usage: .karb //as a reply to any text message
 
 Thanks to @pureindialover for THIS PLUGIN"""
+
 
 # @borg.on(events.NewMessage(pattern=r"\.karb ", outgoing=True))
 @borg.on(admin_cmd(pattern="karb"))
@@ -210,7 +216,12 @@ async def carbon_api(e):
         elif textx:
             pcode = str(textx.message)  # Importing message to module
         code = quote_plus(pcode)  # Converting to urlencoded
-        url = CARBON.format(code=code, R=RED, G=GREEN, B=BLUE, T=The, lang=CARBONLANG)
+        url = CARBON.format(code=code,
+                            R=RED,
+                            G=GREEN,
+                            B=BLUE,
+                            T=The,
+                            lang=CARBONLANG)
         chrome_options = Options()
         chrome_options.add_argument("--headless")
         chrome_options.binary_location = Config.GOOGLE_CHROME_BIN
@@ -222,9 +233,8 @@ async def carbon_api(e):
         chrome_options.add_experimental_option("prefs", prefs)
         await e.edit("⬛⬛⬜⬜⬜")
 
-        driver = webdriver.Chrome(
-            executable_path=Config.CHROME_DRIVER, options=chrome_options
-        )
+        driver = webdriver.Chrome(executable_path=Config.CHROME_DRIVER,
+                                  options=chrome_options)
         driver.get(url)
         download_path = "./"
         driver.command_executor._commands["send_command"] = (
@@ -233,11 +243,15 @@ async def carbon_api(e):
         )
         params = {
             "cmd": "Page.setDownloadBehavior",
-            "params": {"behavior": "allow", "downloadPath": download_path},
+            "params": {
+                "behavior": "allow",
+                "downloadPath": download_path
+            },
         }
         command_result = driver.execute("send_command", params)
 
-        driver.find_element_by_xpath("//button[contains(text(),'Export')]").click()
+        driver.find_element_by_xpath(
+            "//button[contains(text(),'Export')]").click()
         sleep(5)  # this might take a bit.
         # driver.find_element_by_xpath("//button[contains(text(),'4x')]").click()
         # sleep(5)
@@ -251,7 +265,8 @@ async def carbon_api(e):
         await e.client.send_file(
             e.chat_id,
             file,
-            caption="Carbonised by [IndianBot](https://t.me/IndianArMyGiveaway)",
+            caption=
+            "Carbonised by [IndianBot](https://t.me/IndianArMyGiveaway)",
             force_document=False,
             reply_to=e.message.reply_to_msg_id,
         )

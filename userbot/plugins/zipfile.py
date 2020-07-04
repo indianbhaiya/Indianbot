@@ -48,21 +48,20 @@ async def _(event):
             c_time = time.time()
 
             downloaded_file_name = await borg.download_media(
-                reply_message, Config.TMP_DOWNLOAD_DIRECTORY
-            )
+                reply_message, Config.TMP_DOWNLOAD_DIRECTORY)
 
             directory_name = downloaded_file_name
 
             await event.edit("Finish downloading to my local")
 
-            zipfile.ZipFile(directory_name + ".zip", "w", zipfile.ZIP_DEFLATED).write(
-                directory_name
-            )
+            zipfile.ZipFile(directory_name + ".zip", "w",
+                            zipfile.ZIP_DEFLATED).write(directory_name)
 
             await borg.send_file(
                 event.chat_id,
                 directory_name + ".zip",
-                caption="Zipped By [IndianBot](https://t.me/IndianArMyGiveaway)",
+                caption=
+                "Zipped By [IndianBot](https://t.me/IndianArMyGiveaway)",
                 force_document=True,
                 allow_cache=False,
                 reply_to=event.message.id,
@@ -92,18 +91,15 @@ async def _(event):
 
         directory_name = input_str
 
-        zipfile.ZipFile(directory_name + ".zip", "w", zipfile.ZIP_DEFLATED).write(
-            directory_name
-        )
+        zipfile.ZipFile(directory_name + ".zip", "w",
+                        zipfile.ZIP_DEFLATED).write(directory_name)
 
         await event.edit(
-            "Local file compressed to `{}`".format(directory_name + ".zip")
-        )
+            "Local file compressed to `{}`".format(directory_name + ".zip"))
 
 
 """ command: .unzip
 """
-
 
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 extracted = Config.TMP_DOWNLOAD_DIRECTORY + "extracted/"
@@ -124,16 +120,16 @@ async def _(event):
         try:
             c_time = time.time()
             downloaded_file_name = await borg.download_media(
-                reply_message, Config.TMP_DOWNLOAD_DIRECTORY,
+                reply_message,
+                Config.TMP_DOWNLOAD_DIRECTORY,
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             await mone.edit(str(e))
         else:
             end = datetime.now()
             ms = (end - start).seconds
-            await mone.edit(
-                "Stored the zip to `{}` in {} seconds.".format(downloaded_file_name, ms)
-            )
+            await mone.edit("Stored the zip to `{}` in {} seconds.".format(
+                downloaded_file_name, ms))
 
         with zipfile.ZipFile(downloaded_file_name, "r") as zip_ref:
             zip_ref.extractall(extracted)
@@ -156,7 +152,8 @@ async def _(event):
                     if metadata.has("duration"):
                         duration = metadata.get("duration").seconds
                     if os.path.exists(thumb_image_path):
-                        metadata = extractMetadata(createParser(thumb_image_path))
+                        metadata = extractMetadata(
+                            createParser(thumb_image_path))
                         if metadata.has("width"):
                             width = metadata.get("width")
                         if metadata.has("height"):
