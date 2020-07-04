@@ -3,7 +3,11 @@ Thanks to @pureindialover for improving this
 By @xditya Copy with credits
 Thanks to @HEisenbergTheDanger
 """
-from telethon import errors, events, functions, types
+from telethon import errors
+from telethon import events
+from telethon import functions
+from telethon import types
+
 from userbot.utils import admin_cmd
 
 

@@ -11,9 +11,17 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from pySmartDL import SmartDL
 from telethon import events
-from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
-from uniborg.util import admin_cmd, humanbytes, progress, time_formatter
-from userbot.utils import admin_cmd, humanbytes, progress, time_formatter
+from telethon.tl.types import DocumentAttributeAudio
+from telethon.tl.types import DocumentAttributeVideo
+from uniborg.util import admin_cmd
+from uniborg.util import humanbytes
+from uniborg.util import progress
+from uniborg.util import time_formatter
+
+from userbot.utils import admin_cmd
+from userbot.utils import humanbytes
+from userbot.utils import progress
+from userbot.utils import time_formatter
 
 
 @borg.on(admin_cmd(pattern="compress ?(.*)"))
