@@ -2,7 +2,6 @@
 coded by @By_Azade
 code rewritten my SnapDragon7410
 """
-
 import asyncio
 import os
 import time
@@ -14,8 +13,13 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from pySmartDL import SmartDL
 from telethon import events
-from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
-from userbot.utils import admin_cmd, humanbytes, progress, time_formatter
+from telethon.tl.types import DocumentAttributeAudio
+from telethon.tl.types import DocumentAttributeVideo
+
+from userbot.utils import admin_cmd
+from userbot.utils import humanbytes
+from userbot.utils import progress
+from userbot.utils import time_formatter
 
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 extracted = Config.TMP_DOWNLOAD_DIRECTORY + "extracted/"
