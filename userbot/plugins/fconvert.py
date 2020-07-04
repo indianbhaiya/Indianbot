@@ -41,8 +41,10 @@ async def _(event):
         voice_note = False
         supports_streaming = False
         if input_str == "voice":
-            new_required_file_caption = "NLFC_" + str(round(time.time())) + ".opus"
-            new_required_file_name = Config.TMP_DOWNLOAD_DIRECTORY + "/" + new_required_file_caption
+            new_required_file_caption = "NLFC_" + \
+                str(round(time.time())) + ".opus"
+            new_required_file_name = Config.TMP_DOWNLOAD_DIRECTORY + \
+                "/" + new_required_file_caption
             command_to_run = [
                 "ffmpeg",
                 "-i",
@@ -60,8 +62,10 @@ async def _(event):
             voice_note = True
             supports_streaming = True
         elif input_str == "mp3":
-            new_required_file_caption = "NLFC_" + str(round(time.time())) + ".mp3"
-            new_required_file_name = Config.TMP_DOWNLOAD_DIRECTORY + "/" + new_required_file_caption
+            new_required_file_caption = "NLFC_" + \
+                str(round(time.time())) + ".mp3"
+            new_required_file_name = Config.TMP_DOWNLOAD_DIRECTORY + \
+                "/" + new_required_file_caption
             command_to_run = [
                 "ffmpeg",
                 "-i",

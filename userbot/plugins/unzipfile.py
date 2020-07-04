@@ -39,7 +39,7 @@ async def _(event):
             downloaded_file_name = await borg.download_media(
                 reply_message,
                 Config.TMP_DOWNLOAD_DIRECTORY,
-                
+
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             await mone.edit(str(e))
@@ -69,7 +69,8 @@ async def _(event):
                     if metadata.has("duration"):
                         duration = metadata.get('duration').seconds
                     if os.path.exists(thumb_image_path):
-                        metadata = extractMetadata(createParser(thumb_image_path))
+                        metadata = extractMetadata(
+                            createParser(thumb_image_path))
                         if metadata.has("width"):
                             width = metadata.get("width")
                         if metadata.has("height"):
@@ -107,11 +108,6 @@ async def _(event):
                     continue
                 os.remove(single_file)
         os.remove(downloaded_file_name)
-
-
-
-
-
 
 
 def get_lst_of_files(input_directory, output_lst):
