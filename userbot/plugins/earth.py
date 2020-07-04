@@ -1,6 +1,7 @@
-from telethon import events
 import asyncio
 from collections import deque
+
+from telethon import events
 from userbot.utils import admin_cmd
 
 

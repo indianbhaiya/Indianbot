@@ -1,24 +1,19 @@
 """command .compress
 """
-from zipfile import ZipFile
-from hachoir.parser import createParser
-from hachoir.metadata import extractMetadata
-from datetime import datetime
-from userbot.utils import admin_cmd, humanbytes, progress, time_formatter
-from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
-from telethon import events
-
 import asyncio
-
-import zipfile
-
-from pySmartDL import SmartDL
-
-import time
-
 import os
+import time
+import zipfile
+from datetime import datetime
+from zipfile import ZipFile
 
+from hachoir.metadata import extractMetadata
+from hachoir.parser import createParser
+from pySmartDL import SmartDL
+from telethon import events
+from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
 from uniborg.util import admin_cmd, humanbytes, progress, time_formatter
+from userbot.utils import admin_cmd, humanbytes, progress, time_formatter
 
 
 @borg.on(admin_cmd(pattern="compress ?(.*)"))

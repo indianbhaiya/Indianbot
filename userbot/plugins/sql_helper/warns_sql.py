@@ -3,7 +3,9 @@ try:
 except ImportError:
     raise AttributeError
 import threading
-from sqlalchemy import Integer, Column, String, UnicodeText, func, distinct, Boolean
+
+from sqlalchemy import (Boolean, Column, Integer, String, UnicodeText,
+                        distinct, func)
 
 
 class Warns(BASE):

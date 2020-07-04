@@ -5,16 +5,12 @@ Syntax: .belo
 Quotes credits: Being logical Channel
 """
 
-from telethon import events
-
 import asyncio
-
 import os
-
+import random
 import sys
 
-import random
-
+from telethon import events
 from uniborg.util import admin_cmd
 
 

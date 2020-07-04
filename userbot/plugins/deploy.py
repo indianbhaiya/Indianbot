@@ -4,14 +4,11 @@ Available Commands:
 
 .deploy"""
 
-from telethon import events
-
 import asyncio
 
+from telethon import events
 from uniborg.util import admin_cmd
-
 from userbot import ALIVE_NAME
-
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Set vars from heroku"
 
