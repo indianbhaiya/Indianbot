@@ -7,16 +7,15 @@ import asyncio
 import os
 import time
 import zipfile
+from datetime import datetime
+from zipfile import ZipFile
 
+from hachoir.metadata import extractMetadata
+from hachoir.parser import createParser
+from pySmartDL import SmartDL
 from telethon import events
 from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
 from userbot.utils import admin_cmd, humanbytes, progress, time_formatter
-import time
-from datetime import datetime
-from pySmartDL import SmartDL
-from hachoir.metadata import extractMetadata
-from hachoir.parser import createParser
-from zipfile import ZipFile
 
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 extracted = Config.TMP_DOWNLOAD_DIRECTORY + "extracted/"
