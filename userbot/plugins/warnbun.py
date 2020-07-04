@@ -1,4 +1,5 @@
 """.admin Plugin for @IndianBot_Official"""
+from uniborg.util import admin_cmd
 import asyncio
 from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
@@ -22,10 +23,6 @@ async def _(event):
     await event.delete()
 
 """.admin Plugin for @IndianBot_Official"""
-import asyncio
-from telethon import events
-from telethon.tl.types import ChannelParticipantsAdmins
-from uniborg.util import admin_cmd
 
 
 @borg.on(admin_cmd("warn2"))
@@ -45,10 +42,6 @@ async def _(event):
     await event.delete()
 
 """.admin Plugin for @UniBorg"""
-import asyncio
-from telethon import events
-from telethon.tl.types import ChannelParticipantsAdmins
-from uniborg.util import admin_cmd
 
 
 @borg.on(admin_cmd("warn3"))
@@ -68,10 +61,6 @@ async def _(event):
     await event.delete()
 
 """.admin Plugin for @UniBorg"""
-import asyncio
-from telethon import events
-from telethon.tl.types import ChannelParticipantsAdmins
-from uniborg.util import admin_cmd
 
 
 @borg.on(admin_cmd("warn0"))
@@ -91,11 +80,6 @@ async def _(event):
     await event.delete()
 
 """.admin Plugin for @IndianBot_Official"""
-import asyncio
-from telethon import events
-from telethon.tl.types import ChannelParticipantsAdmins
-from userbot.utils import admin_cmd
-
 
 
 @borg.on(admin_cmd("ocb"))
@@ -113,6 +97,7 @@ async def _(event):
     else:
         await event.reply(mentions)
     await event.delete()
+
 
 @borg.on(admin_cmd("fw"))
 async def _(event):

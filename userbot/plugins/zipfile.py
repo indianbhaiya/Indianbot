@@ -1,5 +1,11 @@
 '''command .compress
 '''
+from zipfile import ZipFile
+from hachoir.parser import createParser
+from hachoir.metadata import extractMetadata
+from datetime import datetime
+from userbot.utils import admin_cmd, humanbytes, progress, time_formatter
+from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
 from telethon import events
 
 import asyncio
@@ -15,11 +21,7 @@ import os
 from uniborg.util import admin_cmd, humanbytes, progress, time_formatter
 
 
-
-
-
 @borg.on(admin_cmd(pattern="compress ?(.*)"))
-
 async def _(event):
 
     if event.fwd_from:
@@ -48,7 +50,7 @@ async def _(event):
 
                 Config.TMP_DOWNLOAD_DIRECTORY
 
-                
+
 
             )
 
@@ -56,7 +58,8 @@ async def _(event):
 
             await event.edit("Finish downloading to my local")
 
-            zipfile.ZipFile(directory_name + '.zip', 'w', zipfile.ZIP_DEFLATED).write(directory_name)
+            zipfile.ZipFile(directory_name + '.zip', 'w',
+                            zipfile.ZIP_DEFLATED).write(directory_name)
 
             await borg.send_file(
 
@@ -82,7 +85,7 @@ async def _(event):
 
             except:
 
-                    pass
+                pass
 
             await event.edit("task Completed")
 
@@ -98,29 +101,15 @@ async def _(event):
 
         directory_name = input_str
 
-        zipfile.ZipFile(directory_name + '.zip', 'w', zipfile.ZIP_DEFLATED).write(directory_name)
+        zipfile.ZipFile(directory_name + '.zip', 'w',
+                        zipfile.ZIP_DEFLATED).write(directory_name)
 
         await event.edit("Local file compressed to `{}`".format(directory_name + ".zip"))
 
-        
-        
+
 """ command: .unzip
 """
 
-import asyncio
-import os
-import time
-import zipfile
-
-from telethon import events
-from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
-from userbot.utils import admin_cmd, humanbytes, progress, time_formatter
-import time
-from datetime import datetime
-from pySmartDL import SmartDL
-from hachoir.metadata import extractMetadata
-from hachoir.parser import createParser
-from zipfile import ZipFile
 
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 extracted = Config.TMP_DOWNLOAD_DIRECTORY + "extracted/"
@@ -143,7 +132,7 @@ async def _(event):
             downloaded_file_name = await borg.download_media(
                 reply_message,
                 Config.TMP_DOWNLOAD_DIRECTORY,
-                
+
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             await mone.edit(str(e))
@@ -173,7 +162,8 @@ async def _(event):
                     if metadata.has("duration"):
                         duration = metadata.get('duration').seconds
                     if os.path.exists(thumb_image_path):
-                        metadata = extractMetadata(createParser(thumb_image_path))
+                        metadata = extractMetadata(
+                            createParser(thumb_image_path))
                         if metadata.has("width"):
                             width = metadata.get("width")
                         if metadata.has("height"):
@@ -211,11 +201,6 @@ async def _(event):
                     continue
                 os.remove(single_file)
         os.remove(downloaded_file_name)
-
-
-
-
-
 
 
 def get_lst_of_files(input_directory, output_lst):
