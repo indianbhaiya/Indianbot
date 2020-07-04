@@ -29,14 +29,14 @@ async def lst(event):
         await event.edit(msg)
     else:
         msg = msg.replace("`", "")
-        out = 'filesList.txt'
-        with open(out, 'w') as f:
+        out = "filesList.txt"
+        with open(out, "w") as f:
             f.write(f)
         await borg.send_file(
             event.chat_id,
             out,
             force_document=True,
             allow_cache=False,
-            caption="`Output is huge. Sending as a file...`"
+            caption="`Output is huge. Sending as a file...`",
         )
         await event.delete()

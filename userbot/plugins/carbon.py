@@ -60,7 +60,14 @@ from gtts import gTTS
 
 from emoji import get_emoji_regexp
 
-from userbot import CMD_HELP, BOTLOG, BOTLOG_CHATID, YOUTUBE_API_KEY, CHROME_DRIVER, GOOGLE_CHROME_BIN
+from userbot import (
+    CMD_HELP,
+    BOTLOG,
+    BOTLOG_CHATID,
+    YOUTUBE_API_KEY,
+    CHROME_DRIVER,
+    GOOGLE_CHROME_BIN,
+)
 
 from userbot.utils import register
 
@@ -78,7 +85,7 @@ async def carbon_api(e):
 
         await e.edit("`Processing..`")
 
-        CARBON = 'https://carbon.now.sh/?l={lang}&code={code}'
+        CARBON = "https://carbon.now.sh/?l={lang}&code={code}"
 
         global CARBONLANG
 
@@ -114,29 +121,31 @@ async def carbon_api(e):
 
         chrome_options.add_argument("--disable-gpu")
 
-        prefs = {'download.default_directory': './'}
+        prefs = {"download.default_directory": "./"}
 
-        chrome_options.add_experimental_option('prefs', prefs)
+        chrome_options.add_experimental_option("prefs", prefs)
 
-        driver = webdriver.Chrome(
-            executable_path=CHROME_DRIVER, options=chrome_options)
+        driver = webdriver.Chrome(executable_path=CHROME_DRIVER, options=chrome_options)
 
         driver.get(url)
 
         await e.edit("`Be Patient...\n50%`")
 
-        download_path = './'
+        download_path = "./"
 
         driver.command_executor._commands["send_command"] = (
-            "POST", '/session/$sessionId/chromium/send_command')
+            "POST",
+            "/session/$sessionId/chromium/send_command",
+        )
 
-        params = {'cmd': 'Page.setDownloadBehavior', 'params': {
-            'behavior': 'allow', 'downloadPath': download_path}}
+        params = {
+            "cmd": "Page.setDownloadBehavior",
+            "params": {"behavior": "allow", "downloadPath": download_path},
+        }
 
         command_result = driver.execute("send_command", params)
 
-        driver.find_element_by_xpath(
-            "//button[contains(text(),'Export')]").click()
+        driver.find_element_by_xpath("//button[contains(text(),'Export')]").click()
 
         # driver.find_element_by_xpath("//button[contains(text(),'4x')]").click()
 
@@ -150,31 +159,26 @@ async def carbon_api(e):
 
         await e.edit("`Done Dana Done...\n100%`")
 
-        file = './carbon.png'
+        file = "./carbon.png"
 
         await e.edit("`Uploading..`")
 
         await e.client.send_file(
-
             e.chat_id,
-
             file,
-
             caption="<< Here's your carbon, \n Carbonised by [IndianBot](https://www.github.com/indianbhaiya/IndianBot)>> ",
-
             force_document=True,
-
             reply_to=e.message.reply_to_msg_id,
-
         )
 
-        os.remove('./IndianBot.png')
+        os.remove("./IndianBot.png")
 
         driver.quit()
 
         # Removing carbon.png after uploading
 
         await e.delete()  # Deleting msg
+
 
 """Carbon Scraper Plugin for Userbot. //text in creative way.
 usage: .karb //as a reply to any text message
@@ -187,36 +191,37 @@ async def carbon_api(e):
     RED = random.randint(0, 256)
     GREEN = random.randint(0, 256)
     BLUE = random.randint(0, 256)
-    THEME = ["3024-night",
-             "a11y-dark",
-             "blackboard",
-             "base16-dark",
-             "base16-light",
-             "cobalt",
-             "dracula",
-             "duotone-dark",
-             "hopscotch",
-             "lucario",
-             "material",
-             "monokai",
-             "night-owl",
-             "nord",
-             "oceanic-next",
-             "one-light",
-             "one-dark",
-             "panda-syntax",
-             "paraiso-dark",
-             "seti",
-             "shades-of-purple",
-             "solarized",
-             "solarized%20light",
-             "synthwave-84",
-             "twilight",
-             "verminal",
-             "vscode",
-             "yeti",
-             "zenburn",
-             ]
+    THEME = [
+        "3024-night",
+        "a11y-dark",
+        "blackboard",
+        "base16-dark",
+        "base16-light",
+        "cobalt",
+        "dracula",
+        "duotone-dark",
+        "hopscotch",
+        "lucario",
+        "material",
+        "monokai",
+        "night-owl",
+        "nord",
+        "oceanic-next",
+        "one-light",
+        "one-dark",
+        "panda-syntax",
+        "paraiso-dark",
+        "seti",
+        "shades-of-purple",
+        "solarized",
+        "solarized%20light",
+        "synthwave-84",
+        "twilight",
+        "verminal",
+        "vscode",
+        "yeti",
+        "zenburn",
+    ]
 
     CUNTHE = random.randint(0, len(THEME) - 1)
     The = THEME[CUNTHE]
@@ -224,7 +229,7 @@ async def carbon_api(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         """ A Wrapper for carbon.now.sh """
         await e.edit("⬜⬜⬜⬜⬜")
-        CARBON = 'https://carbon.now.sh/?bg=rgba({R}%2C{G}%2C.{B}%2C1)&t={T}&wt=none&l=auto&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=56px&ph=56px&ln=false&fl=1&fm=Fira%20Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code={code}'
+        CARBON = "https://carbon.now.sh/?bg=rgba({R}%2C{G}%2C.{B}%2C1)&t={T}&wt=none&l=auto&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=56px&ph=56px&ln=false&fl=1&fm=Fira%20Code&fs=14px&lh=152%25&si=false&es=2x&wm=false&code={code}"
         CARBONLANG = "en"
         textx = await e.get_reply_message()
         pcode = e.text
@@ -233,31 +238,34 @@ async def carbon_api(e):
         elif textx:
             pcode = str(textx.message)  # Importing message to module
         code = quote_plus(pcode)  # Converting to urlencoded
-        url = CARBON.format(code=code, R=RED, G=GREEN,
-                            B=BLUE, T=The, lang=CARBONLANG)
+        url = CARBON.format(code=code, R=RED, G=GREEN, B=BLUE, T=The, lang=CARBONLANG)
         chrome_options = Options()
         chrome_options.add_argument("--headless")
         chrome_options.binary_location = Config.GOOGLE_CHROME_BIN
         chrome_options.add_argument("--window-size=1920x1080")
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument('--disable-gpu')
-        prefs = {'download.default_directory': './'}
-        chrome_options.add_experimental_option('prefs', prefs)
+        chrome_options.add_argument("--disable-gpu")
+        prefs = {"download.default_directory": "./"}
+        chrome_options.add_experimental_option("prefs", prefs)
         await e.edit("⬛⬛⬜⬜⬜")
 
         driver = webdriver.Chrome(
-            executable_path=Config.CHROME_DRIVER, options=chrome_options)
+            executable_path=Config.CHROME_DRIVER, options=chrome_options
+        )
         driver.get(url)
-        download_path = './'
+        download_path = "./"
         driver.command_executor._commands["send_command"] = (
-            "POST", '/session/$sessionId/chromium/send_command')
-        params = {'cmd': 'Page.setDownloadBehavior', 'params': {
-            'behavior': 'allow', 'downloadPath': download_path}}
+            "POST",
+            "/session/$sessionId/chromium/send_command",
+        )
+        params = {
+            "cmd": "Page.setDownloadBehavior",
+            "params": {"behavior": "allow", "downloadPath": download_path},
+        }
         command_result = driver.execute("send_command", params)
 
-        driver.find_element_by_xpath(
-            "//button[contains(text(),'Export')]").click()
+        driver.find_element_by_xpath("//button[contains(text(),'Export')]").click()
         sleep(5)  # this might take a bit.
         # driver.find_element_by_xpath("//button[contains(text(),'4x')]").click()
         # sleep(5)
@@ -266,7 +274,7 @@ async def carbon_api(e):
         # sleep(5) #Waiting for downloading
 
         await e.edit("⬛⬛⬛⬛⬛")
-        file = './carbon.png'
+        file = "./carbon.png"
         await e.edit("✅RGB Karbon Completed, Uploading RGB Karbon✅")
         await e.client.send_file(
             e.chat_id,
@@ -276,6 +284,6 @@ async def carbon_api(e):
             reply_to=e.message.reply_to_msg_id,
         )
 
-        os.remove('./carbon.png')
+        os.remove("./carbon.png")
         # Removing carbon.png after uploading
         await e.delete()  # Deleting msg
