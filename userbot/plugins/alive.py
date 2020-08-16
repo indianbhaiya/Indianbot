@@ -6,18 +6,14 @@ from platform import uname
 from userbot import ALIVE_NAME
 from userbot.utils import admin_cmd
 
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "**No Name set yet.** [Check Guide.](https://how2techy.com/xtra-guide1/)"
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
-
-#@command(outgoing=True, pattern="^.alive$")
-@borg.on(admin_cmd(pattern=r"alive"))
+@command(outgoing=True, pattern="^.alive$")
 async def amireallyalive(alive):
-    """ For .alive command, check if the bot is running.  """
-    await alive.edit("**Apun Zinda He Sarr ^.^** \n`🇮🇳BOT Status : ` **☣Hot**\n\n"
-                     f"`My peru owner`: {DEFAULTUSER}\n\n"
-                     "`Telethon version:` **6.0.9**\n`Python:` **3.7.4**\n"
-                     "`Database Status:` **😀ALL OK**\n\n`Always with you, my master!\n`"
-                     "**Bot Creator:** [🇮🇳INDIAN BHAI](t.me/pureindialover)\n"
-                     "**Co-Owner:** [🇮🇳AKASH](t.me/AKASH_AM1)\n\n"
-                     "     [🇮🇳Deploy This IndianBot🇮🇳](https://github.com/indianbhaiya/IndianBot)") 
-
+""" For .alive command, check if the bot is running. """
+await alive.edit("`Are Abhi Apun Zanda He Malik, Kiya seva kar sakta hu!` **ψ(｀∇´)ψ**\n\n"
+"`Telethon version: 6.9.0\nPython: 3.7.3\n`"
+# Don't change this else you a TikTok loser, Son of Jinping. Add your own.
+"`Bot created by:` [SnapDragon](tg://user?id=719877937), @anubisxx\n"
+f"`My peru owner`: {DEFAULTUSER}\n\n"
+"https://github.com/Dark-Princ3/X-tra-Telegram")
