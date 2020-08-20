@@ -4,10 +4,7 @@ from collections import deque
 
 from telethon.tl.functions.channels import LeaveChannelRequest
 
-from userbot import bot
-from userbot import BOTLOG
-from userbot import BOTLOG_CHATID
-from userbot import CMD_HELP
+from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot
 from userbot.utils import admin_cmd
 
 
