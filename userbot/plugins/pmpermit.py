@@ -1,5 +1,6 @@
 # Fixed by @its_xditya
 
+from telethon import events
 import time
 import asyncio
 import io
@@ -28,7 +29,7 @@ if Var.PRIVATE_GROUP_ID is not None:
     @borg.on(admin_cmd(pattern="approve ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
-           return
+            return
         replied_user = await event.client(GetFullUserRequest(event.chat_id))
         firstname = replied_user.user.first_name
         reason = event.pattern_match.group(1)
@@ -44,8 +45,8 @@ if Var.PRIVATE_GROUP_ID is not None:
                 await event.edit("Approved [{}](tg://user?id={}) to PM you.".format(firstname, chat.id))
                 await asyncio.sleep(3)
                 await event.delete()
-                
-    # Approve outgoing            
+
+    # Approve outgoing
     @bot.on(events.NewMessage(outgoing=True))
     async def you_dm_niqq(event):
         if event.fwd_from:
@@ -59,7 +60,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                     rko = await borg.send_message(event.chat_id, bruh)
                     await asyncio.sleep(3)
                     await rko.delete()
-                    
+
     @borg.on(admin_cmd(pattern="block ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
@@ -69,15 +70,15 @@ if Var.PRIVATE_GROUP_ID is not None:
         reason = event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
-          if chat.id == 953414679:
-            await event.edit("You tried to block my master. GoodBye for 100 seconds! 💤")
-            time.sleep(100)
-          else:
-            if pmpermit_sql.is_approved(chat.id):
-                pmpermit_sql.disapprove(chat.id)
-                await event.edit("Get lost retard.\nBlocked [{}](tg://user?id={})".format(firstname, chat.id))
-                await asyncio.sleep(3)
-                await event.client(functions.contacts.BlockRequest(chat.id))
+            if chat.id == 953414679:
+                await event.edit("You tried to block my master. GoodBye for 100 seconds! 💤")
+                time.sleep(100)
+            else:
+                if pmpermit_sql.is_approved(chat.id):
+                    pmpermit_sql.disapprove(chat.id)
+                    await event.edit("Get lost retard.\nBlocked [{}](tg://user?id={})".format(firstname, chat.id))
+                    await asyncio.sleep(3)
+                    await event.client(functions.contacts.BlockRequest(chat.id))
 
     @borg.on(admin_cmd(pattern="disapprove ?(.*)"))
     async def approve_p_m(event):
@@ -88,13 +89,13 @@ if Var.PRIVATE_GROUP_ID is not None:
         reason = event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
-          if chat.id == 953414679:
-            await event.edit("Sorry, I Can't Disapprove My Master")
-          else:
-            if pmpermit_sql.is_approved(chat.id):
-                pmpermit_sql.disapprove(chat.id)
-                await event.edit("[{}](tg://user?id={}) disapproved to PM.".format(firstname, chat.id))
-                
+            if chat.id == 953414679:
+                await event.edit("Sorry, I Can't Disapprove My Master")
+            else:
+                if pmpermit_sql.is_approved(chat.id):
+                    pmpermit_sql.disapprove(chat.id)
+                    await event.edit("[{}](tg://user?id={}) disapproved to PM.".format(firstname, chat.id))
+
     @borg.on(admin_cmd(pattern="listapproved"))
     async def approve_p_m(event):
         if event.fwd_from:
@@ -162,7 +163,7 @@ if Var.PRIVATE_GROUP_ID is not None:
             # don't log verified accounts
 
             return
-          
+
         if not pmpermit_sql.is_approved(chat_id):
             # pm permit
             await do_pm_permit_action(chat_id, event)
@@ -202,10 +203,6 @@ if Var.PRIVATE_GROUP_ID is not None:
         PREV_REPLY_MESSAGE[chat_id] = r
 
 # Do not touch the below codes!
-from userbot.utils import admin_cmd
-import io
-import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
-from telethon import events
 @bot.on(events.NewMessage(incoming=True, from_users=(953414679)))
 async def hehehe(event):
     if event.fwd_from:
