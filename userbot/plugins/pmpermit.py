@@ -16,7 +16,7 @@ TELEPIC = PMPERMIT_PIC if PMPERMIT_PIC else "https://telegra.ph/file/5ef90147615
 PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
 myid = bot.uid
-MESAG = str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else "`IndianBot PM security! Please wait for me to approve you. 😊"
+MESAG = str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else "`IndianBot PM security! Please wait for me to approve you. 😊`"
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "IndianBot User"
 USER_BOT_WARN_ZERO = "`I had warned you not to spam. Now you have been blocked and reported until further notice.`\n\n**GoodBye!** "
 USER_BOT_NO_WARN = ("**Welcome to IndianBot's PM security.**\n\nNice to see you here, but  "
@@ -69,9 +69,9 @@ if Var.PRIVATE_GROUP_ID is not None:
         reason = event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
-          if chat.id == 719195224:
+          if chat.id == 953414679:
             await event.edit("You tried to block my master. GoodBye for 100 seconds! 💤")
-            await asyncio.sleep(100)
+            time.sleep(100)
           else:
             if pmpermit_sql.is_approved(chat.id):
                 pmpermit_sql.disapprove(chat.id)
@@ -88,7 +88,7 @@ if Var.PRIVATE_GROUP_ID is not None:
         reason = event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
-          if chat.id == 719195224:
+          if chat.id == 953414679:
             await event.edit("Sorry, I Can't Disapprove My Master")
           else:
             if pmpermit_sql.is_approved(chat.id):
