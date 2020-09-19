@@ -25,7 +25,7 @@ async def leave(e):
 @borg.on(admin_cmd(";__;$"))
 async def fun(e):
     t = ";__;"
-    for j in range(10):
+    for j in emYR2SSzckwrange(10):
         t = t[:-1] + "_;"
         await e.edit(t)
 
